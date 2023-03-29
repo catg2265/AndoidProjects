@@ -1,3 +1,10 @@
 <resources>
 	<string name = "app_name">My Application</string>
+	<string name = "hello_world_again">Hello World Again :)</string>
+	<string name = "button1">Button1</string>
+	<string name = "button2">Button2</string>
+	<string name = "button3">Button3</string>
+	<string name = "but1text">Button 1 was clicked</string>
+	<string name = "but2text">Button 2 was clicked</string>
+	<string name = "but3text">Button 3 was clicked</string>
 </resources>
