@@ -1,29 +1,26 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
-	Button button1, button2, button3, buttonLayout2;
-	TextView text1;
+	TextView text1, textCounter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		button1 = findViewById(R.id.btn_1);
-		button2 = findViewById(R.id.btn_2);
-		button3 = findViewById(R.id.btn_3);
-		//buttonLayout2 = findViewById();
 		text1 = findViewById(R.id.txt1);
-		button2.setOnClickListener(this);
-		button1.setOnClickListener(this);
 	}
 
 	@Override
@@ -37,8 +34,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		{
 			text1.setText(R.string.but2text);
 		}
-
+		if (view.getId() == R.id.btn_2_2)
+		{
+			textCounter = findViewById(R.id.txtCount);
+			String currentText = textCounter.getText().toString();
+			Integer current = Integer.parseInt(currentText);
+			current++;
+			Log.d("current count", current.toString());
+			textCounter.setText(current.toString());
+		}
 	}
+
 	public void GoToSecondaryLayout(View view)
 	{
 		Log.d("SecondLayoutMethod", "GoToSecondaryLayout: ");
@@ -48,5 +54,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	{
 		Log.d("MainLayoutMethod", "GoToMainLayout: ");
 		setContentView(R.layout.activity_main);
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		MenuInflater menuInflater = getMenuInflater();
+
+		menuInflater.inflate(R.menu.mymenu, menu);
+
+		return super.onCreateOptionsMenu(menu);
+	}
+	@Override
+	public boolean onOptionsItemSelected(@NonNull MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+			case R.id.home:
+				setContentView(R.layout.activity_main);
+				break;
+			case R.id.secondlayout:
+				setContentView(R.layout.activity_secondary);
+				break;
+			case R.id.exit:
+				finish();
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 }
