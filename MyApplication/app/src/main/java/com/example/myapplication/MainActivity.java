@@ -12,9 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
-	TextView text1, textCounter;
+	TextView text1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -36,15 +38,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		}
 		if (view.getId() == R.id.btn_2_2)
 		{
-			textCounter = findViewById(R.id.txtCount);
-			String currentText = textCounter.getText().toString();
-			Integer current = Integer.parseInt(currentText);
-			current++;
-			Log.d("current count", current.toString());
-			textCounter.setText(current.toString());
+			CounterLayout2();
 		}
 	}
-
+	private void CounterLayout2()
+	{
+		TextView textCounter = findViewById(R.id.txtCount);
+		String currentText = textCounter.getText().toString();
+		Integer current = Integer.parseInt(currentText);
+		current++;
+		Log.d("current count", current.toString());
+		textCounter.setText(current.toString());
+	}
 	public void GoToSecondaryLayout(View view)
 	{
 		Log.d("SecondLayoutMethod", "GoToSecondaryLayout: ");
