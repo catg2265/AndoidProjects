@@ -3,13 +3,14 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
-	Button button1, button2, button3;
+	Button button1, button2, button3, buttonLayout2;
 	TextView text1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -19,8 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		button1 = findViewById(R.id.btn_1);
 		button2 = findViewById(R.id.btn_2);
 		button3 = findViewById(R.id.btn_3);
+		//buttonLayout2 = findViewById();
 		text1 = findViewById(R.id.txt1);
-		button3.setOnClickListener(this);
 		button2.setOnClickListener(this);
 		button1.setOnClickListener(this);
 	}
@@ -36,9 +37,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		{
 			text1.setText(R.string.but2text);
 		}
-		if (view.getId() == R.id.btn_3)
-		{
-			text1.setText(R.string.but3text);
-		}
+
+	}
+	public void GoToSecondaryLayout(View view)
+	{
+		Log.d("SecondLayoutMethod", "GoToSecondaryLayout: ");
+		setContentView(R.layout.activity_secondary);
+	}
+	public void GoToMainLayout(View view)
+	{
+		Log.d("MainLayoutMethod", "GoToMainLayout: ");
+		setContentView(R.layout.activity_main);
 	}
 }

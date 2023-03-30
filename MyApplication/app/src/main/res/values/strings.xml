@@ -7,4 +7,6 @@
 	<string name = "but1text">Button 1 was clicked</string>
 	<string name = "but2text">Button 2 was clicked</string>
 	<string name = "but3text">Button 3 was clicked</string>
+	<string name="go_back">Go back</string>
+	<string name="this_is_the_secondary_layout">This is the secondary layout</string>
 </resources>

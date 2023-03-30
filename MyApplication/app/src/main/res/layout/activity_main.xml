@@ -52,16 +52,17 @@
 		app:layout_constraintTop_toBottomOf = "@+id/btn_1"/>
 
 	<Button
-		android:id = "@+id/btn_3"
-		android:layout_width = "240dp"
-		android:layout_height = "60dp"
-		android:layout_marginTop = "100dp"
-		android:backgroundTint = "#7E467B"
-		android:text = "@string/button3"
-		android:textColor = "#233A35"
-		android:textSize = "30sp"
-		app:layout_constraintEnd_toEndOf = "parent"
-		app:layout_constraintHorizontal_bias = "0.502"
-		app:layout_constraintStart_toStartOf = "parent"
-		app:layout_constraintTop_toBottomOf = "@+id/btn_2"/>
+		android:id="@+id/btn_3"
+		android:layout_width="240dp"
+		android:layout_height="60dp"
+		android:layout_marginTop="100dp"
+		android:backgroundTint="#7E467B"
+		android:onClick="GoToSecondaryLayout"
+		android:text="@string/button3"
+		android:textColor="#233A35"
+		android:textSize="30sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.502"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/btn_2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
