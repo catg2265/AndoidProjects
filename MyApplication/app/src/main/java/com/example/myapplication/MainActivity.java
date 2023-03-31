@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 			case R.id.secondlayout:
 				setContentView(R.layout.activity_secondary);
 				break;
+			case R.id.inputlayout:
+				setContentView(R.layout.activity_input);
+				break;
 			case R.id.exit:
 				finish();
 		}

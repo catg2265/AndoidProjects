@@ -7,6 +7,9 @@
 	<item android:id="@+id/secondlayout"
 	      android:title="@string/second_layout"/>
 
+	<item android:id="@+id/inputlayout"
+	      android:title="@string/input"/>
+
 	<item android:id="@+id/exit"
 	      android:title="@string/exit"/>
 
