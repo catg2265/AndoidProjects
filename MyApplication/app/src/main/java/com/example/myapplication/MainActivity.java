@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +15,6 @@ import android.content.Intent;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
 	TextView text1;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -24,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		setContentView(R.layout.activity_main);
 		text1 = findViewById(R.id.txt1);
 	}
-
 	@Override
 	public void onClick(View view)
 	{

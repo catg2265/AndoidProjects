@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +18,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	EditText num1text;
 	EditText num2text;
 	TextView resultText;
+	Intent main = new Intent(this, MainActivity.class);
+	Intent calc = new Intent(this, CalculatorActivity.class);
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -28,11 +29,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		num2text   = findViewById(R.id.number2);
 		resultText = findViewById(R.id.result);
 	}
-
 	@Override
 	public void onClick(View view)
 	{
-
 		int num1 = Integer.parseInt(num1text.getText().toString());
 		int num2 = Integer.parseInt(num2text.getText().toString());
 		int result;
@@ -82,20 +81,17 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		switch (item.getItemId())
 		{
 			case R.id.home:
-				Intent intent = new Intent(this, MainActivity.class);
-				startActivity(intent);
+				startActivity(main);
 				break;
 			case R.id.secondlayout:
 				setContentView(R.layout.activity_secondary);
 				break;
 			case R.id.inputlayout:
-				Intent intent2 = new Intent(this, CalculatorActivity.class);
-				startActivity(intent2);
+				startActivity(calc);
 				break;
 			case R.id.exit:
 				finish();
 		}
-
 		return super.onOptionsItemSelected(item);
 	}
 }
