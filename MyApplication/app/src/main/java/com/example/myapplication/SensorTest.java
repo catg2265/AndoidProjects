@@ -2,65 +2,67 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.hardware.*;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.content.Intent;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener
+public class SensorTest extends AppCompatActivity implements SensorEventListener
 {
 	Intent sensorActivity = new Intent( this, SensorTest.class);
 	Intent main           = new Intent(this, MainActivity.class);
 	Intent calc = new Intent(this, CalculatorActivity.class);
-	TextView text1;
+
+	private SensorManager sensorManager;
+	private Sensor lightSensor;
+
+	TextView sensorText;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		text1 = findViewById(R.id.txt1);
+		setContentView(R.layout.activity_sensor_test);
+
+		sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+		sensorText = findViewById(R.id.sensorOutput);
 	}
+
 	@Override
-	public void onClick(View view)
+	public void onSensorChanged(SensorEvent sensorEvent)
 	{
-		if(view.getId() == R.id.btn_1)
-		{
-			text1.setText(R.string.but1text);
-		}
-		if (view.getId() == R.id.btn_2)
-		{
-			text1.setText(R.string.but2text);
-		}
-		if (view.getId() == R.id.btn_2_2)
-		{
-			CounterLayout2();
-		}
+		float lux = sensorEvent.values[0];
+		String output = String.valueOf(lux);
+		sensorText.setText(output);
 	}
-	@SuppressLint("SetTextI18n")
-	private void CounterLayout2()
+
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int i)
 	{
-		TextView textCounter = findViewById(R.id.txtCount);
-		String currentText = textCounter.getText().toString();
-		int    current     = Integer.parseInt(currentText);
-		current++;
-		Log.d("current count", Integer.toString(current));
-		textCounter.setText(Integer.toString(current));
+
 	}
-	public void GoToSecondaryLayout(View view)
+
+	@Override
+	protected void onResume()
 	{
-		Log.d("SecondLayoutMethod", "GoToSecondaryLayout: ");
-		setContentView(R.layout.activity_secondary);
+		super.onResume();
+		sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_UI);
 	}
-	public void GoToMainLayout(View view)
+
+	@Override
+	protected void onPause()
 	{
-		Log.d("MainLayoutMethod", "GoToMainLayout: ");
-		setContentView(R.layout.activity_main);
+		super.onPause();
+		sensorManager.unregisterListener(this);
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 		return super.onCreateOptionsMenu(menu);
 	}
+	@SuppressLint("NonConstantResourceId")
 	@Override
 	public boolean onOptionsItemSelected(@NonNull MenuItem item)
 	{
@@ -90,9 +93,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 			case R.id.exit:
 				finish();
 		}
-
 		return super.onOptionsItemSelected(item);
 	}
-
-
 }

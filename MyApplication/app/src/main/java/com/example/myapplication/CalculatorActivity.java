@@ -18,17 +18,21 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	EditText num1text;
 	EditText num2text;
 	TextView resultText;
-	Intent main = new Intent(this, MainActivity.class);
+
+	Intent sensorActivity = new Intent( this, SensorTest.class);
+	Intent main           = new Intent(this, MainActivity.class);
 	Intent calc = new Intent(this, CalculatorActivity.class);
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator);
-		num1text   = findViewById(R.id.number1);
-		num2text   = findViewById(R.id.number2);
+		num1text = findViewById(R.id.number1);
+		num2text = findViewById(R.id.number2);
 		resultText = findViewById(R.id.result);
 	}
+
 	@Override
 	public void onClick(View view)
 	{
@@ -46,25 +50,26 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		if (view.getId() == R.id.button2)
 		{
 			// Subtraction
-			result = num1-num2;
+			result = num1 - num2;
 			Log.d("minus", "onClick: minus");
 			resultText.setText(String.valueOf(result));
 		}
 		if (view.getId() == R.id.button3)
 		{
 			// Multiplication
-			result = num1*num2;
+			result = num1 * num2;
 			Log.d("multiply", "onClick: multiply");
 			resultText.setText(String.valueOf(result));
 		}
 		if (view.getId() == R.id.button4)
 		{
 			// Division
-			result = num1/num2;
+			result = num1 / num2;
 			Log.d("divide", "onClick: divide");
 			resultText.setText(String.valueOf(result));
 		}
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
@@ -74,7 +79,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
 		return super.onCreateOptionsMenu(menu);
 	}
-	@SuppressLint("NonConstantResourceId")
+
 	@Override
 	public boolean onOptionsItemSelected(@NonNull MenuItem item)
 	{
@@ -89,9 +94,13 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			case R.id.inputlayout:
 				startActivity(calc);
 				break;
+			case R.id.sensorlayout:
+				startActivity(sensorActivity);
+				break;
 			case R.id.exit:
 				finish();
 		}
+
 		return super.onOptionsItemSelected(item);
 	}
 }
