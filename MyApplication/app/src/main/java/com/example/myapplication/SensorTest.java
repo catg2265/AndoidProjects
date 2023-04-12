@@ -15,10 +15,6 @@ import android.widget.TextView;
 
 public class SensorTest extends AppCompatActivity implements SensorEventListener
 {
-	Intent sensorActivity = new Intent( this, SensorTest.class);
-	Intent main           = new Intent(this, MainActivity.class);
-	Intent calc = new Intent(this, CalculatorActivity.class);
-
 	private SensorManager sensorManager;
 	private Sensor lightSensor;
 
@@ -76,23 +72,28 @@ public class SensorTest extends AppCompatActivity implements SensorEventListener
 	@Override
 	public boolean onOptionsItemSelected(@NonNull MenuItem item)
 	{
+		Intent intent;
 		switch (item.getItemId())
 		{
 			case R.id.home:
-				startActivity(main);
+				intent = new Intent(this, MainActivity.class);
+				startActivity(intent);
 				break;
 			case R.id.secondlayout:
 				setContentView(R.layout.activity_secondary);
 				break;
 			case R.id.inputlayout:
-				startActivity(calc);
+				intent = new Intent(this, CalculatorActivity.class);
+				startActivity(intent);
 				break;
 			case R.id.sensorlayout:
-				startActivity(sensorActivity);
+				intent = new Intent(this, SensorTest.class);
+				startActivity(intent);
 				break;
 			case R.id.exit:
 				finish();
 		}
+
 		return super.onOptionsItemSelected(item);
 	}
 }
