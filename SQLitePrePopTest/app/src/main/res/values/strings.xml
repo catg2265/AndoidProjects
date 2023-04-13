@@ -1,3 +1,4 @@
 <resources>
 	<string name = "app_name">SQLitePrePopTest</string>
+	<string name = "fetch_all_data">Fetch All Data</string>
 </resources>
