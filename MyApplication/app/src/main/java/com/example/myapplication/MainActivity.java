@@ -14,9 +14,6 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
-	Intent sensorActivity = new Intent( this, SensorTest.class);
-	Intent main           = new Intent(this, MainActivity.class);
-	Intent calc = new Intent(this, CalculatorActivity.class);
 	TextView text1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -26,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		text1 = findViewById(R.id.txt1);
 	}
 	@Override
-	public void onClick(View view)
+	public void onClick(@NonNull View view)
 	{
 		if(view.getId() == R.id.btn_1)
 		{
@@ -49,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		int    current     = Integer.parseInt(currentText);
 		current++;
 		Log.d("current count", Integer.toString(current));
+		
 		textCounter.setText(Integer.toString(current));
 	}
 	public void GoToSecondaryLayout(View view)
@@ -73,19 +71,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	@Override
 	public boolean onOptionsItemSelected(@NonNull MenuItem item)
 	{
+		Intent intent;
 		switch (item.getItemId())
 		{
 			case R.id.home:
-				startActivity(main);
+				intent = new Intent(this, MainActivity.class);
+				startActivity(intent);
 				break;
 			case R.id.secondlayout:
 				setContentView(R.layout.activity_secondary);
 				break;
 			case R.id.inputlayout:
-				startActivity(calc);
+				intent = new Intent(this, CalculatorActivity.class);
+				startActivity(intent);
 				break;
 			case R.id.sensorlayout:
-				startActivity(sensorActivity);
+				intent = new Intent(this, SensorTest.class);
+				startActivity(intent);
 				break;
 			case R.id.exit:
 				finish();
