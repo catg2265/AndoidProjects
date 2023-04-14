@@ -9,8 +9,12 @@
 
 	<item android:id="@+id/inputlayout"
 	      android:title="@string/input"/>
+
 	<item android:id="@+id/sensorlayout"
 	      android:title="@string/sensortest"/>
+
+	<item android:id="@+id/MainActivity2"
+	      android:title="@string/mainact2"/>
 
 	<item android:id="@+id/exit"
 	      android:title="@string/exit"/>

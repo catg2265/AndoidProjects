@@ -2,63 +2,62 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.annotation.SuppressLint;
+
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.content.Intent;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class MainActivity2 extends AppCompatActivity
 {
-	TextView text1;
+
+	AutoCompleteTextView autoText;
+
+	ArrayList<String> list;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		text1 = findViewById(R.id.txt1);
-	}
-	@Override
-	public void onClick(@NonNull View view)
-	{
-		if(view.getId() == R.id.btn_1)
-		{
-			text1.setText(R.string.but1text);
-		}
-		if (view.getId() == R.id.btn_2)
-		{
-			text1.setText(R.string.but2text);
-		}
-		if (view.getId() == R.id.btn_2_2)
-		{
-			CounterLayout2();
-		}
-	}
-	@SuppressLint("SetTextI18n")
-	private void CounterLayout2()
-	{
-		TextView textCounter = findViewById(R.id.txtCount);
-		String currentText = textCounter.getText().toString();
-		int    current     = Integer.parseInt(currentText);
-		current++;
-		Log.d("current count", Integer.toString(current));
+		setContentView(R.layout.activity_main2);
+
+		autoText = (AutoCompleteTextView) findViewById(R.id.autoComplete);
+
+		list = new ArrayList<String>();
+
+		list.add("Hello");
+		list.add("World");
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, list);
+		autoText.setThreshold(1);
+		autoText.setAdapter(adapter);
+
 		
-		textCounter.setText(Integer.toString(current));
+
 	}
-	public void GoToSecondaryLayout(View view)
-	{
-		Log.d("SecondLayoutMethod", "GoToSecondaryLayout: ");
-		setContentView(R.layout.activity_secondary);
-	}
-	public void GoToMainLayout(View view)
-	{
-		Log.d("MainLayoutMethod", "GoToMainLayout: ");
-		setContentView(R.layout.activity_main);
-	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
@@ -100,6 +99,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 		return super.onOptionsItemSelected(item);
 	}
-
-
 }
