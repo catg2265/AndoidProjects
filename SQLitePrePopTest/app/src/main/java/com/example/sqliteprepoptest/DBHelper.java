@@ -1,26 +1,17 @@
 package com.example.sqliteprepoptest;
 
-import static android.database.sqlite.SQLiteDatabase.openDatabase;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Locale;
-
 import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper
 {
