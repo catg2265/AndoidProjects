@@ -38,7 +38,7 @@ public class MainActivity2 extends AppCompatActivity
 		autoText.setThreshold(1);
 		autoText.setAdapter(adapter);
 
-		
+
 
 	}
 
